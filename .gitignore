@@ -1,3 +1,12 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Security files
+*.pem
+*.key
+
 # Terraform
 .terraform/
 *.tfstate
@@ -10,5 +19,9 @@ crash.*.log
 *.tfvars
 *.tfvars.json
 
-# Sensitive files
-.env
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
