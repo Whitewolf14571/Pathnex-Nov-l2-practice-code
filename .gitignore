@@ -1,0 +1,15 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+
+# AWS credentials and secrets
+.aws/
+.env
+*.pem
+*.key
+
+# OS files
+.DS_Store
