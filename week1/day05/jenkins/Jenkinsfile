@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Whitewolf14571/Pathnex-Nov-l2-practice-code.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building project from Git repository'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running unit tests'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+    }
+}
