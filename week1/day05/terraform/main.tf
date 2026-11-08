@@ -1,5 +1,5 @@
 resource "aws_instance" "day05_ec2" {
-  ami           = "ami-0f5ee92e2d63afc18"
+  ami           = "ami-01e91e94accc42eec"
   instance_type = var.instance_type
 
 
