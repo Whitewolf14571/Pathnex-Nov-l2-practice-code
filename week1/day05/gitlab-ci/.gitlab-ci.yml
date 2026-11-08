@@ -1,0 +1,11 @@
+stages:
+  - test
+
+runner-test:
+  stage: test
+  image: alpine:latest
+  script:
+    - echo "GitLab Runner is working!"
+    - echo "Running inside Docker executor"
+    - uname -a
+    - cat /etc/os-release
