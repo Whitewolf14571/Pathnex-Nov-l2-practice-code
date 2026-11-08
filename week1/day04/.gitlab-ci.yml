@@ -1,0 +1,19 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Building Pathnex application"
+
+test:
+  stage: test
+  script:
+    - echo "Running Pathnex tests"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying Pathnex application"

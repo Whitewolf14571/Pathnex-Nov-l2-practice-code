@@ -1,0 +1,48 @@
+---
+- name: Install and configure Nginx
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Start nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Create website homepage
+      ansible.builtin.copy:
+        content: "Hello Pathnex - Managed by Ansible!"
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+    - name: Configure nginx
+      ansible.builtin.template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/sites-available/pathnex
+        mode: '0644'
+      notify: Reload nginx
+
+    - name: Enable Pathnex website
+      ansible.builtin.file:
+        src: /etc/nginx/sites-available/pathnex
+        dest: /etc/nginx/sites-enabled/pathnex
+        state: link
+      notify: Reload nginx
+
+    - name: Validate nginx configuration
+      ansible.builtin.command: nginx -t
+      changed_when: false
+
+  handlers:
+    - name: Reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+        

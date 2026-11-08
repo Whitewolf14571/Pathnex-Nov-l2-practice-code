@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+
+    stages {
+       stage('Build') {
+           steps {
+               echo 'Building Pathnex application'
+           }
+       }
+
+    stage('Test') {
+        steps{
+            echo 'Running Pathnex tests'
+        }
+    }
+
+    stage('Deploy'){
+        steps {
+            echo 'Deploying Pathnex application'
+        }
+    }
+    }
+}
+
